@@ -7,7 +7,7 @@ import oracledb
 # ====================================================================
 DB_CONFIG = {
     "user": "FIXTRACK",
-    "password": "fixtrack@2026",
+    "password": "Enter Your Password Here",
     "host": "localhost",
     "port": 1521,
     "service_name": "FREEPDB1"
