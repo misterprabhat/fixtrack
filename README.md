@@ -31,6 +31,7 @@ Business logic (submitting, assigning, status changes, statistics) lives **insid
 | 🛡️ **Admin** | See campus-wide KPIs (Total / Pending / Resolved), browse all complaints, and assign requests to staff. |
 
 **UI highlights**
+
 - Modern split-screen login and a navy navigation bar with a role badge
 - Card-based layout with KPI metric cards
 - Zebra-striped tables with color-coded status labels
@@ -129,17 +130,20 @@ PENDING ──(admin assigns)──▶ IN PROGRESS ──(staff updates)──�
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Python 3.9 or newer
 - Oracle Database 26ai Free running locally
 - An SQL client such as SQL Developer or SQL*Plus
 
 ### 1. Clone the repository
+
 ```bash
-git clone https://github.com/<your-username>/FixTrack.git
+git clone https://github.com/misterprabhat/FixTrack.git
 cd FixTrack
 ```
 
 ### 2. Install the Python driver
+
 ```bash
 pip install oracledb
 ```
@@ -156,6 +160,7 @@ Run the scripts in this order.
 | 4 | `04_setup_procedures_triggers_views.sql` | `FIXTRACK` (use **Run Script / F5**) |
 
 ### 4. Configure the connection
+
 Open `fixtrack_app.py` and check `DB_CONFIG` near the top:
 
 ```python
@@ -171,6 +176,7 @@ DB_CONFIG = {
 > ⚠️ **Security note:** the password in this repository is for local demo use only. Never commit real credentials.
 
 ### 5. Run the app
+
 ```bash
 python fixtrack_app.py
 ```
@@ -193,6 +199,7 @@ The login screen lets you pick a user directly (demo mode).
 > The email addresses are fictional sample data. The app never sends email.
 
 ### Suggested demo flow
+
 1. Log in as a **Student** and submit a new complaint.
 2. Log in as **Admin** and assign it to a staff member. The status moves to `IN PROGRESS`.
 3. Log in as that **Staff** member and mark it `RESOLVED`.
@@ -206,7 +213,10 @@ FixTrack/
 │   ├── 01_create_user.sql
 │   ├── 02_create_tables.sql
 │   ├── 03_insert_sample_data.sql
-│   └── 04_setup_procedures_triggers_views.sql
+│   ├── 04_insert_sample_requests.sql
+│   ├── complete_database_setup.sql
+│   ├── final_setup.sql
+│   └── setup_all.sql
 ├── screenshots/
 ├── fixtrack_app.py
 └── README.md
@@ -231,9 +241,9 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 🙋 Author
 
-**Prabhat Kumar**
-Chandigarh University · MCA · 2026
-[GitHub](https://github.com/misterprabhat)
+**Prabhat Kumar**  
+🎓 Chandigarh University · MCA · 2026  
+🔗 [GitHub: @misterprabhat](https://github.com/misterprabhat)
 
 <div align="center">
 
