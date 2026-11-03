@@ -18,7 +18,7 @@ A role-based desktop application where students report campus issues, admins ass
 
 ## 📖 About
 
-**FixTrack** is a DBMS course project that digitizes the campus maintenance workflow. Instead of paper complaints and word-of-mouth, every issue is logged, assigned, tracked, and resolved in one place.
+**FixTrack** is a PL/SQL course project that digitizes the campus maintenance workflow. Instead of paper complaints and word-of-mouth, every issue is logged, assigned, tracked, and resolved in one place.
 
 Business logic (submitting, assigning, status changes, statistics) lives **inside the database** as stored procedures and functions. The Python GUI is a thin client that calls them.
 
