@@ -1,0 +1,83 @@
+INSERT INTO REQUESTS
+(TITLE, DESCRIPTION, LOCATION, CATEGORY_ID, SUBMITTED_BY,
+ PRIORITY, STATUS)
+SELECT
+'Classroom lights not working',
+'Several lights in the classroom are not switching on.',
+'Academic Block A - Room 101',
+(SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Electrical'),
+(SELECT USER_ID FROM USERS WHERE EMAIL = 'aarav@example.com'),
+'HIGH',
+'PENDING'
+FROM DUAL;
+
+INSERT INTO REQUESTS
+(TITLE, DESCRIPTION, LOCATION, CATEGORY_ID, SUBMITTED_BY,
+ PRIORITY, STATUS)
+SELECT
+'Water leakage in washroom',
+'A tap is continuously leaking and needs repair.',
+'Hostel Block B - Ground Floor',
+(SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Plumbing'),
+(SELECT USER_ID FROM USERS WHERE EMAIL = 'riya@example.com'),
+'MEDIUM',
+'IN PROGRESS'
+FROM DUAL;
+
+INSERT INTO REQUESTS
+(TITLE, DESCRIPTION, LOCATION, CATEGORY_ID, SUBMITTED_BY,
+ PRIORITY, STATUS)
+SELECT
+'Broken classroom chair',
+'One chair has a damaged leg and cannot be used safely.',
+'Academic Block B - Room 204',
+(SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Furniture'),
+(SELECT USER_ID FROM USERS WHERE EMAIL = 'karan@example.com'),
+'HIGH',
+'PENDING'
+FROM DUAL;
+
+INSERT INTO REQUESTS
+(TITLE, DESCRIPTION, LOCATION, CATEGORY_ID, SUBMITTED_BY,
+ ASSIGNED_TO, PRIORITY, STATUS)
+SELECT
+'Wi-Fi connection unavailable',
+'The Wi-Fi network is not working in the study area.',
+'Central Library',
+(SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Internet'),
+(SELECT USER_ID FROM USERS WHERE EMAIL = 'aarav@example.com'),
+(SELECT USER_ID FROM USERS WHERE EMAIL = 'rahul.staff@example.com'),
+'MEDIUM',
+'IN PROGRESS'
+FROM DUAL;
+
+INSERT INTO REQUESTS
+(TITLE, DESCRIPTION, LOCATION, CATEGORY_ID, SUBMITTED_BY,
+ ASSIGNED_TO, PRIORITY, STATUS)
+SELECT
+'Classroom cleaning required',
+'The classroom requires proper cleaning.',
+'Academic Block A - Room 105',
+(SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Cleaning'),
+(SELECT USER_ID FROM USERS WHERE EMAIL = 'riya@example.com'),
+(SELECT USER_ID FROM USERS WHERE EMAIL = 'neha.staff@example.com'),
+'LOW',
+'RESOLVED'
+FROM DUAL;
+
+COMMIT;
+
+
+SELECT
+    R.REQUEST_ID,
+    R.TITLE,
+    C.CATEGORY_NAME,
+    U.FULL_NAME AS SUBMITTED_BY,
+    R.PRIORITY,
+    R.STATUS
+FROM REQUESTS R
+JOIN CATEGORIES C
+    ON R.CATEGORY_ID = C.CATEGORY_ID
+JOIN USERS U
+    ON R.SUBMITTED_BY = U.USER_ID
+ORDER BY R.REQUEST_ID;
